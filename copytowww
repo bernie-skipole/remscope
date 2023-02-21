@@ -3,6 +3,22 @@ rsync -ua --exclude=".*" ~/remscope/ ~/www/
 
 cd ~/www/astrodata
 
+echo "Downloading star data"
+
 curl -L https://github.com/bernie-skipole/acremscope/releases/download/v0.0.1/dbases.tar.gz --output dbases.tar.gz
 
 tar -xvf dbases.tar.gz
+
+echo "Creating planets data in planet.db, this can take some time, please wait"
+
+/home/ubuntu/rsenv/bin/python make_planets.py
+
+echo "Creating the user database main.db"
+
+cd maindb
+
+/home/ubuntu/rsenv/bin/python start_db.py
+
+mkdir /home/ubuntu/www/astrodata/served/backups
+
+/home/ubuntu/rsenv/bin/python backup.py

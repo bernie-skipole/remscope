@@ -3,9 +3,9 @@
 
 # As root create a cron table with:
 
-# crontab -u bernard -e
+# crontab -u ubuntu -e
 
-# 30 14 * * 6 /usr/bin/python3 /home/bernard/www/astrodata/maindb/backup.py >/dev/null 2>&1
+# 30 14 * * 6 /usr/bin/python3 /home/ubuntu/www/astrodata/maindb/backup.py >/dev/null 2>&1
 #
 # ie 2:30 afternoon every saturday
 
@@ -27,7 +27,7 @@ key = b'X_iVOrYmWlob2UjIHXIlnHWjaEQQPsTqiJB7sgaoaA4='
 
 # This is the directory where backups will be saved
 
-backups_directory = "/home/bernard/www/astrodata/served/backups"
+backups_directory = "/home/ubuntu/www/astrodata/served/backups"
 
 
 def dump_database():

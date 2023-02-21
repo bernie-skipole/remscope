@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
     # NOTE: This call needs to be edited with the correct longitude, latitude and met office api values
 
-    get_weather("/home/bernard/www/astrodata/weather.json",
+    get_weather("/home/ubuntu/www/astrodata/weather.json",
                 longitude=-2.1544,
                 latitude=53.7111,
                 met_client_id="",
@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
 # crontab -u bernard -e
 
-# 30 9,16 * * * /usr/bin/python3 /home/bernard/www/astrodata/metoffice.py >/dev/null 2>&1
+# 30 9,16 * * * /usr/bin/python3 /home/ubuntu/www/astrodata/metoffice.py >/dev/null 2>&1
 
 # at 9:30 and 16:30 each day
 
