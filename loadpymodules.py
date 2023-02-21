@@ -6,6 +6,8 @@ from os.path import join, expanduser
 from subprocess import run
 from os.path import abspath
 
+print("Creating rsenv directory and installing python modules")
+
 resenvdir = join(expanduser("~"), "rsenv")
 create(dir, with_pip=True)
 

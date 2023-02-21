@@ -20,47 +20,11 @@ ssh-copy-id ubuntu@<ip address of VPS>
 
 This will ask for the ubuntu password
 
-so now the following works from laptop
+so now login tot he VPS from your laptop
 
-ssh <ip address of VPS>
+ssh ubuntu@<ip address of VPS>
 
-## Remove password login and root login via ssh
-
-On the VPS gain root permissions with the following:
-
-sudo bash
-
-Then edit the file /etc/ssh/sshd_config using the nano text editor:
-
-nano /etc/ssh/sshd_config
-
-Set the line:
-
-PasswordAuthentication yes
-
-to
-
-PasswordAuthentication no
-
-Set the line:
-
-PermitRootLogin yes
-
-to
-
-PermitRootLogin no
-
-Save the new file, and restart ssh with the command:
-
-systemctl restart ssh.service
-
-This will lose your connection.
-
-## get remscope software from git
-
-Login to the server again
-
-ssh <ip address of VPS>
+## Load software
 
 load the remscope software from the git repository:
 
@@ -79,6 +43,10 @@ This may ask for your password
 Then run a script to install software
 
 source buildserver
+
+When this is done, run a python program to install Python modules
+
+python3 loadpymodules.py
 
 
 
