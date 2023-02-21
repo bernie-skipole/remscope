@@ -44,9 +44,15 @@ Then run a script to install software
 
 source buildserver
 
-When this is done, run a python program to install Python modules
+When this is done, it should run an nginx web server, from your browser call the VPS ip address and you should get the default nginx page.
+
+## Load python modules
+
+Still in the remscope directory of the VPS, but not with root permissions, as the buildserver script should have dropped root, run a python program to install Python modules, this will create another directory, rsenv in the ubuntu home directory:
 
 python3 loadpymodules.py
+
+
 
 
 

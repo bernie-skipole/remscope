@@ -4,4 +4,5 @@ redis
 indi-bin
 iptraf-ng
 nginx
+python3-venv
 
