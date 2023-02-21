@@ -20,7 +20,7 @@ ssh-copy-id ubuntu@<ip address of VPS>
 
 This will ask for the ubuntu password
 
-so now login tot he VPS from your laptop
+so now login to the VPS from your laptop
 
 ssh ubuntu@<ip address of VPS>
 
@@ -28,7 +28,7 @@ ssh ubuntu@<ip address of VPS>
 
 load the remscope software from the git repository:
 
-git clone git@github.com:bernie-skipole/remscope.git
+git clone https://github.com/bernie-skipole/remscope.git
 
 This should create the directory remscope, change into that directory
 

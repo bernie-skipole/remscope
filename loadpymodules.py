@@ -8,8 +8,8 @@ from os.path import abspath
 
 print("Creating rsenv directory and installing python modules")
 
-resenvdir = join(expanduser("~"), "rsenv")
-create(dir, with_pip=True)
+rsenvdir = join(expanduser("~"), "rsenv")
+create(rsenvdir, with_pip=True)
 
 # where requirements.txt is in same directory as this script
-run(["bin/pip", "install", "-r", abspath("requirements.txt")], cwd=resenvdir)
+run(["bin/pip", "install", "-r", abspath("requirements.txt")], cwd=rsenvdir)
