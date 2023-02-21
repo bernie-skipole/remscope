@@ -1,0 +1,10 @@
+skipole
+waitress
+redis
+paho-mqtt
+indiredis
+astropy
+astroquery
+jplephem
+astroplan
+astropy-healpix
