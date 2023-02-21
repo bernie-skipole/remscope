@@ -1,0 +1,8 @@
+
+rsync -ua --exclude=".*" ~/remscope/ ~/www/
+
+cd ~/www/astrodata
+
+curl -L https://github.com/bernie-skipole/acremscope/releases/download/v0.0.1/dbases.tar.gz --output dbases.tar.gz
+
+tar -xvf dbases.tar.gz

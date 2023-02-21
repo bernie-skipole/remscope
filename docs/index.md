@@ -52,6 +52,16 @@ Still in the remscope directory of the VPS, but not with root permissions, as th
 
 python3 loadpymodules.py
 
+## Copy star database files
+
+The directory ~/www will be the actual working directory running the application, wherease ~/remscope will remain a git repository.
+
+Run the following script to create directory ~/www which is a copy of ~/remscope, but without the hidden git files, and it also downloads the star databases.
+
+
+source copytowww
+
+
 
 
 
