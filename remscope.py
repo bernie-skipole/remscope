@@ -216,7 +216,7 @@ def start_call(called_ident, skicall):
 
     backupfile = None
     if called_ident is None:
-        #### note: the url "/db_backups" is also set into acremscope/acremscope_packages/admin/server.py
+        #### note: the url "/db_backups" is also set into remscope/remscope_packages/admin/server.py
         #### if this url changes, it should be changed there as well
         backupfile = skicall.map_url_to_server("/db_backups", cfg.get_dbbackups_directory())
         if backupfile is None:
