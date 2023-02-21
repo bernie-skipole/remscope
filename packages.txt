@@ -1,0 +1,7 @@
+python3-pip
+unzip
+redis
+indi-bin
+iptraf-ng
+nginx
+

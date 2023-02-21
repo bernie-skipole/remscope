@@ -1,0 +1,9 @@
+echo "Building server - Installing software packages"
+
+xargs --arg-file packages.txt apt-get -y install
+
+echo "Creating rsenv directory and installing python modules"
+
+python3 loadpymodules.py
+
+
