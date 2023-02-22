@@ -6,6 +6,7 @@
 "skipole": "5.4.2",
 "specialpages": {
 "addguest": 3404,
+"about": 2,
 "book_members": 3222,
 "book_session": 4003,
 "book_slot": 3225,
@@ -145,7 +146,7 @@
 "show": true,
 "hide_if_empty": false,
 "attribs": {
-"href": "{2}"
+"href": "{about}"
 },
 "parts": [
 [
@@ -422,7 +423,7 @@ false,
 "show": true,
 "hide_if_empty": false,
 "attribs": {
-"href": "{2}"
+"href": "{about}"
 },
 "parts": [
 [
