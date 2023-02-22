@@ -5,7 +5,7 @@ After=multi-user.target
 
 [Service]
 Type=idle
-ExecStart=/home/ubuntu/rsenv/bin/python /home/ubuntu/remscope/indidrivers.py
+ExecStart=/home/ubuntu/rsenv/bin/python /home/ubuntu/www/indidrivers.py
 
 User=ubuntu
 

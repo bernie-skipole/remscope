@@ -1,0 +1,21 @@
+## Install acremscope.service
+
+cp /home/ubuntu/www/remscope.service /lib/systemd/system
+
+systemctl daemon-reload
+
+systemctl enable remscope.service
+
+systemctl start remscope
+
+## Install indidrivers.service
+
+cp /home/ubuntu/www/indidrivers.service /lib/systemd/system
+
+systemctl daemon-reload
+
+systemctl enable indidrivers.service
+
+systemctl start indidrivers
+
+

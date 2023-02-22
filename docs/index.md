@@ -91,6 +91,10 @@ python3 /home/ubuntu/www/astrodata/maindb/backup.py
 and a backup file will be created in ~/www/astrodata/served/backups
 
 
+## start services
+
+
+
 
 
 
