@@ -104,7 +104,7 @@ source installservices
 
 source makecrontab
 
-And then to activate it
+And to see if it has been loaded
 
 crontab -e
 
