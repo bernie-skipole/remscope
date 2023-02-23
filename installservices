@@ -18,4 +18,5 @@ systemctl enable indidrivers.service
 
 systemctl start indidrivers
 
+exit
 

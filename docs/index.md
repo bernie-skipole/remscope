@@ -93,6 +93,12 @@ and a backup file will be created in ~/www/astrodata/served/backups
 
 ## start services
 
+cd ~/remscope
+
+sudo bash
+
+source installservices
+
 
 
 
