@@ -1,0 +1,13 @@
+
+30 10 * * * /home/ubuntu/rsenv/bin/python /home/ubuntu/www/astrodata/make_planets.py >/dev/null 2>&1
+
+0 9 * * 6 /home/ubuntu/rsenv/bin/python /home/ubuntu/www/astrodata/IERS_A.py >/dev/null 2>&1
+
+15 10 * * * /home/ubuntu/rsenv/bin/python /home/ubuntu/www/astrodata/clientrequests.py >/dev/null 2>&1
+
+30 9,16 * * * /home/ubuntu/rsenv/bin/python /home/ubuntu/www/astrodata/metoffice.py >/dev/null 2>&1
+
+0 12,13 * * * /home/ubuntu/rsenv/bin/python /home/ubuntu/www/astrodata/maindb/clearguests.py >/dev/null 2>&1
+
+30 14 * * 6 /home/ubuntu/rsenv/bin/python /home/ubuntu/www/astrodata/maindb/backup.py >/dev/null 2>&1
+
