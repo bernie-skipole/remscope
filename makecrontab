@@ -1,1 +1,1 @@
-crontab -l -u ubuntu | cat - cronentries | crontab -u ubuntu -
+(crontab -l 2>/dev/null) | cat - cronentries | crontab -
