@@ -100,6 +100,16 @@ sudo bash
 source installservices
 
 
+## create crontab
+
+source makecrontab
+
+And then to activate it
+
+crontab -e
+
+
+
 
 
 
