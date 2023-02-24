@@ -5,7 +5,7 @@ cd ~/www/astrodata
 
 echo "Downloading star data"
 
-curl -L https://github.com/bernie-skipole/acremscope/releases/download/v0.0.1/dbases.tar.gz --output dbases.tar.gz
+curl -L https://github.com/bernie-skipole/remscope/releases/download/v0.0.1/dbases.tar.gz --output dbases.tar.gz
 
 tar -xvf dbases.tar.gz
 

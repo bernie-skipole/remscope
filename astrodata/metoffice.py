@@ -3,6 +3,10 @@ import json, datetime
 from urllib.request import Request, urlopen
 
 
+# SET THE CORRECT LONGITUDE, LATITUDE AND MET OFFICE KEYS IN THE FUNCTION CALL
+# AT THE END OF THIS FILE
+
+
 def get_weather(weatherfile, longitude, latitude, met_client_id, met_client_secret):
     "Creates json file of weather data" 
 
@@ -30,7 +34,7 @@ def get_weather(weatherfile, longitude, latitude, met_client_id, met_client_secr
     _features = received_data['features'] # list containing a dictionary
     _geometry = _features[0]['geometry']
     _properties = _features[0]['properties'] # dictionary with elements modelRunDate, requestPointDistance, timeSeries
-    _timeSeries = _properties['timeSeries'] # list containing dictionaries, each diictionary is the data for one hour
+    _timeSeries = _properties['timeSeries'] # list containing dictionaries, each dictionary is the data for one hour
     _parameters = received_data['parameters'] # list containing a dictionary
     parameter_dictionary = _parameters[0] # each element of the dictionary describes a parameter
 
@@ -55,9 +59,15 @@ def get_weather(weatherfile, longitude, latitude, met_client_id, met_client_secr
         json.dump(weather_dict, fp)
 
 
-
 def weathertime(weatherfile, timestring):
     "Return the list of lists of weather parameters for a given hour"
+
+    # this function can be used if required to print weather parameters for a given hour
+    # timestring is needed in a format like 2021-06-13T12:00Z, for example
+    # thistime = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:00Z")
+    # result = weathertime("weather.json", thistime)
+    # print(result)
+
     with open(weatherfile, 'r') as fp:
         weather_dict = json.load(fp)
     if timestring not in weather_dict:
@@ -65,11 +75,11 @@ def weathertime(weatherfile, timestring):
     return weather_dict[timestring]
 
 
-
-
 if __name__ == "__main__":
 
-    # NOTE: This call needs to be edited with the correct longitude, latitude and met office api values
+    # SET THE CORRECT LONGITUDE, LATITUDE AND MET OFFICE KEYS IN THIS FUNCTION CALL
+
+    # Create weather.json file of weather data
 
     get_weather("/home/ubuntu/www/astrodata/weather.json",
                 longitude=-2.1544,
@@ -77,17 +87,5 @@ if __name__ == "__main__":
                 met_client_id="",
                 met_client_secret="")
 
-    # datetime needed in a format like 2021-06-13T12:00Z
-    #thistime = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:00Z")
-    #result = weathertime("weather.json", thistime)
-    #print(result)
 
-
-# As root create a cron table with:
-
-# crontab -u bernard -e
-
-# 30 9,16 * * * /usr/bin/python3 /home/ubuntu/www/astrodata/metoffice.py >/dev/null 2>&1
-
-# at 9:30 and 16:30 each day
 
