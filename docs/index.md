@@ -80,14 +80,14 @@ From the browser of your laptop, call the VPS ip address and you should get the 
 
 ## Load python modules
 
-Still in the remscope directory of the VPS, but no longer with root permissions, as the buildserver script should have dropped root, run the Python program loadpymodules.py which installs a load of Python astronomy modules.  This will automaticall create another directory rsenv in the ubuntu home directory, where the modules will be placed, and will display various messages as the modules are installed. Wait for the normal prompt before continuing. To run the program type:
+Still in the remscope directory of the VPS, but no longer with root permissions, as the buildserver script should have dropped root, run the Python program loadpymodules.py which installs a load of Python astronomy modules.  This will automaticall create another directory rsenv in the ubuntu home directory, where the modules will be placed, and will display various messages as the modules are installed. It will take some time, so wait for the normal prompt which will appear when all is done. To run the program type:
 
 python3 loadpymodules.py
 
 
 ## Copy star database files
 
-A new directory www will be created which is the actual working directory running the application.
+The next script creates directory www which is the actual working directory running the application.
 
 Still in the remscope directory, run the script copytowww to create directory www and which copies required files, and also downloads star and planet data. It will take some time, so again wait for the normal prompt which will appear when all is done.
 
@@ -98,7 +98,7 @@ source copytowww
 
 The file www/astrodata/metoffice.py need to be edited with the client id and key for the met office, these values are not available in these scripts downloaded from github, since they are private.  If you do not have these keys, then miss this section out, it can be done later.
 
-To get keys, register the application with the met office Global spot data service and get a client id, and client secret api keys. You will also  need the longitude and latitude where the weather data is to be calculated for: 
+To get keys, register the application with the met office Global spot data service and get a client id, and client secret api keys. You will also  need the longitude and latitude where the weather data is to be calculated for. You should then edit metoffice.py:
 
 cd ~/www/astrodata
 
@@ -111,7 +111,7 @@ python3 metoffice.py
 
 ## backups
 
-The python script backup.py is automatically run weekly, it creates a database backup file and saves the file to the backups directory. A backup has been created using default keys, but these are publicly available on the git repository.
+The python script backup.py is automatically run weekly, it creates an encrypted database backup file and saves the file to the backups directory. A backup has been created using default encryption keys, but these are publicly available on the git repository.
 
 The file www/astrodata/maindb/backup.py should be inspected, and a new encryption key should be created, and recorded. If a new encryption key is created, it should also be set into restore.py
 
@@ -121,7 +121,7 @@ cd ~/www/astrodata/maindb
 
 python3 backup.py
 
-and a backup file will be created in ~/www/astrodata/served/backups
+and a backup file will be created in www/astrodata/served/backups
 
 
 ## start services
