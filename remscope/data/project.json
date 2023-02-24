@@ -24311,6 +24311,45 @@ false
 "Part",
 {
 "tag_name": "p",
+"brief": "About build",
+"show": true,
+"hide_if_empty": false,
+"parts": [
+[
+"Text",
+"Server build documentation"
+],
+[
+"HTMLSymbol",
+{
+"text": "&nbsp;"
+}
+],
+[
+"Part",
+{
+"tag_name": "a",
+"brief": "link to remscope docs",
+"show": true,
+"hide_if_empty": false,
+"attribs": {
+"href": "https://bernie-skipole.github.io/remscope"
+},
+"parts": [
+[
+"Text",
+"https://bernie-skipole.github.io/remscope"
+]
+]
+}
+]
+]
+}
+],
+[
+"Part",
+{
+"tag_name": "p",
 "brief": "About indi-mr",
 "show": true,
 "hide_if_empty": false,
