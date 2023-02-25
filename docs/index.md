@@ -122,9 +122,13 @@ To test backup.py, call:
 
 **python3 backup.py**
 
-and a backup file will be created in www/astrodata/served/backups.
+and a backup file will be created in ~/www/astrodata/served/backups.
 
-Currently this has been created using default encryption keys, which are publicly available on the git repository. However work is ongoing to change this.
+An encryption key will be created in ~/www/astrodata/maindb/keyfile the first time backup.py is run. A copy of the contents of this file should be kept elsewhere, as it must be available to decrypt and restore the backup if necessary. The keyfile can be listed with:
+
+**less keyfile**
+
+copy the contents with cut and paste, and use q to quit the less command.
 
 
 ## start services
