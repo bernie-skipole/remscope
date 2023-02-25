@@ -13,31 +13,33 @@ The following assumes the server is an Ubuntu server, and the username of the lo
 
 So to log in, either use putty, or if coming from a Linux laptop/desktop:
 
-ssh ubuntu@ip-address
+**ssh ubuntu@ip-address**
 
-and you will be asked for the password. If this is the first time you may get warnings.
+Replace ip-address with the ip address of your VPS. You will be asked for the password. If this is the first time of connection you may get warnings.
 
 
 ## Update the VPS
 
 Type the following two commands to update the VPS:
 
-sudo apt-get update
+**sudo apt-get update**
 
-sudo apt-get upgrade
+**sudo apt-get upgrade**
 
-and reboot if the upgrade requests it
+You may get asked for your password to confirm sudo permissions. Reboot the server if the upgrade requests it.
+
+**sudo reboot**
 
 
 ## Optional - copy SSH key
 
-If you are using a Linux laptop to call the VPS, and you have an ssh key, you could install your key in the VPS. From your laptop you would type:
+If you are using a Linux laptop to call the VPS, and you have an ssh key, you could install your key in the VPS. On your laptop you would type:
 
-ssh-copy-id ubuntu@ip-address
+**ssh-copy-id ubuntu@ip-address**
 
 This will ask for the password and will pass your key to the VPS. So now login to the VPS from your laptop:
 
-ssh ubuntu@ip-address
+**ssh ubuntu@ip-address**
 
 and in future you will no longer need to put in your password.
 
@@ -46,43 +48,44 @@ and in future you will no longer need to put in your password.
 
 Having logged in to the VPS as user ubuntu, load the remscope code from the git repository by typing:
 
-git clone https://github.com/bernie-skipole/remscope.git
+**git clone https://github.com/bernie-skipole/remscope.git**
 
 This should create the directory remscope, and pulls in code from github. You can check the directory has been created using the ls command:
 
-ls
+**ls**
 
 A good deal of further software is required - some packages need root permissions to install. The remscope directory contains script files which do the installation, and the rest of this document describes how they are run. Change into the remscope directory, and list it to view the contents:
 
-cd remscope
+**cd remscope**
 
-ls
+**ls**
 
 The first script to run is buildserver, this requires root permission, which is obtained by typing:
 
-sudo bash
+**sudo bash**
 
 This may ask for your password.
 
 Then run the script buildserver to install software from the ubuntu repositories, the source command runs the script file as if each line of the script was being typed in:
 
-source buildserver
+**source buildserver**
 
 This may take some time, you will see output printed as packages are installed. When this is done your normal prompt will be shown again.
 
 Your VPS should now be running an NGINX web server and a redis server, which acts as a database for the remscope application. Check the redis server is running with:
 
-redis-cli ping PONG
+**redis-cli ping PONG**
 
 You should get PONG output.
 
 From the browser of your laptop, call the VPS ip address and you should get the default NGINX page.
 
+
 ## Load python modules
 
 Still in the remscope directory of the VPS, but no longer with root permissions, as the buildserver script should have dropped root, run the Python program loadpymodules.py which installs a load of Python astronomy modules.  This will automaticall create another directory rsenv in the ubuntu home directory, where the modules will be placed, and will display various messages as the modules are installed. It will take some time, so wait for the normal prompt which will appear when all is done. To run the program type:
 
-python3 loadpymodules.py
+**python3 loadpymodules.py**
 
 
 ## Copy star database files
@@ -91,50 +94,50 @@ The next script creates directory www which is the actual working directory runn
 
 Still in the remscope directory, run the script copytowww to create directory www and which copies required files, and also downloads star and planet data. It will take some time, so again wait for the normal prompt which will appear when all is done.
 
-source copytowww
+**source copytowww**
 
 
 ## Met office data
 
-The file www/astrodata/metoffice.py need to be edited with the client id and key for the met office, these values are not available in these scripts downloaded from github, since they are private.  If you do not have these keys, then miss this section out, it can be done later.
+The file www/astrodata/metoffice.py needs to be edited with the client id and key for the met office, these values are not available in these scripts downloaded from github, since they are private.  If you do not have these keys, then miss this section out, it can be done later.
 
 To get keys, register the application with the met office Global spot data service and get a client id, and client secret api keys. You will also  need the longitude and latitude where the weather data is to be calculated for. You should then edit metoffice.py:
 
-cd ~/www/astrodata
+**cd ~/www/astrodata**
 
-nano metoffice.py
+**nano metoffice.py**
 
 This opens an editor, insert the correct values, and save the result. The program metoffice.py will be automatically run daily to download a file weather.json, you can also run it manually to check that weather.json is created:
 
-python3 metoffice.py
+**python3 metoffice.py**
 
 
 ## backups
 
-The python script backup.py is automatically run weekly, it creates an encrypted database backup file and saves the file to the backups directory. A backup has been created using default encryption keys, but these are publicly available on the git repository.
-
-The file www/astrodata/maindb/backup.py should be inspected, and a new encryption key should be created, and recorded. If a new encryption key is created, it should also be set into restore.py
+The python script ~/www/astrodata/maindb/backup.py is automatically run weekly, it creates an encrypted database backup file and saves the file to the backups directory.
 
 To test backup.py, call:
 
-cd ~/www/astrodata/maindb
+**cd ~/www/astrodata/maindb**
 
-python3 backup.py
+**python3 backup.py**
 
-and a backup file will be created in www/astrodata/served/backups
+and a backup file will be created in www/astrodata/served/backups.
+
+Currently this has been created using default encryption keys, which are publicly available on the git repository. However work is ongoing to change this.
 
 
 ## start services
 
 The script file installservices in the remscope directory loads the system services which run the web application. These require root permission to install, so run the following:
 
-cd ~/remscope
+**cd ~/remscope**
 
-sudo bash
+**sudo bash**
 
-source installservices
+**source installservices**
 
-At this point, calling the server with you browser should show the remscope web pages.
+At this point, calling the server ip address with your browser should show the remscope web pages.
 
 You should immdiately change the admin password. Log in with user admin, password password, pin 1234 and, under the section Your Settings, change the password and pin.
 
@@ -145,15 +148,15 @@ Under web settings in the admin section you can change the home page title and i
 
 Call the script makecrontab which copies the cronentries file into crontab: 
 
-source makecrontab
+**source makecrontab**
 
-And to see if these entries have been loaded by listing the crontab file:
+And check entries have been loaded by listing the crontab file:
 
-crontab -l
+**crontab -l**
 
 If required, crontab can be further edited with:
 
-crontab -e
+**crontab -e**
 
 The cron entries create re-occuring jobs which maintain the system, these are:
 
@@ -165,9 +168,9 @@ clientrequests.py is run at 10:15 each day, which requests dome door closure, in
 
 metoffice.py is run at 9:30 and 16:30 each day, and calls a met office api to obtain weather data which it sets into file weather.json.
 
-clearguests.py clears expired guests from the database every mid day, and mid day + 1, cron works on local time, so mid day, and mid day + 1 should get 12 utc between them.
+clearguests.py clears expired guests from the database every mid day, and mid day + 1 hour, cron works on local time, so mid day, and mid day + 1 should get 12 utc between them.
 
-backup.py gets a dump of the main sqlite database, 2:30 afternoon every saturday, compresses and encrypts it, and saves the file where it can be downloaded by admin users.
+backup.py gets a dump of the main database, 2:30 afternoon every saturday, compresses and encrypts it, and saves the file where it can be downloaded by admin users.
 
 
 
