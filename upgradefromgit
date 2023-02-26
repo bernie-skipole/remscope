@@ -30,3 +30,5 @@ systemctl start remscope
 
 systemctl start indidrivers
 
+exit
+
