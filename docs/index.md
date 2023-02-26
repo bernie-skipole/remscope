@@ -183,6 +183,11 @@ clearguests.py clears expired guests from the database every mid day, and mid da
 backup.py gets a dump of the main database, 2:30 afternoon every saturday, compresses and encrypts it, and saves the file where it can be downloaded by admin users.
 
 
+## Getting certificate from letsencrypt
+
+Follow instructions from https://certbot.eff.org/lets-encrypt
+
+
 ## Upgrade during development
 
 If changes are made to the software on the github site, and these are to be applied to the running system, the following can be done - however this will briefly stop the site working, so should be done in daylight hours.
