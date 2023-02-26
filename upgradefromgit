@@ -20,15 +20,7 @@ cd $SCRIPT_DIR
 
 git pull
 
-systemctl stop remscope
-
-systemctl stop indidrivers
-
 rsync -uav --include={"astrodata/","remscope/","remscope_packages/","indidrivers.py","remscope.py"} --exclude="*" ~/remscope/ ~/www/
 
-systemctl start remscope
 
-systemctl start indidrivers
-
-exit
 
