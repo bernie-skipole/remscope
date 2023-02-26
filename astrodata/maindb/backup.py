@@ -1,11 +1,8 @@
 """Creates encrypted backup file of the database"""
 
+# This is typically run with a cron entry
 
-# As root create a cron table with:
-
-# crontab -u ubuntu -e
-
-# 30 14 * * 6 /usr/bin/python3 /home/ubuntu/www/astrodata/maindb/backup.py >/dev/null 2>&1
+# 30 14 * * 6 /usr/bin/python3 ~/www/astrodata/maindb/backup.py >/dev/null 2>&1
 #
 # ie 2:30 afternoon every saturday
 
@@ -16,7 +13,7 @@ import sys, os, sqlite3, bz2, datetime, pathlib, base64
 from cryptography.fernet import Fernet
 
 
-# Backups will be saved in /home/ubuntu/www/astrodata/served/backups
+# Backups will be saved in ~/www/astrodata/served/backups
 # this calculates it relative to the position of this file
 
 astrodata_directory = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))

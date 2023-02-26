@@ -2,6 +2,8 @@ import json, datetime
 
 from urllib.request import Request, urlopen
 
+from os.path import join, expanduser
+
 
 # SET THE CORRECT LONGITUDE, LATITUDE AND MET OFFICE KEYS IN THE FUNCTION CALL
 # AT THE END OF THIS FILE
@@ -81,7 +83,9 @@ if __name__ == "__main__":
 
     # Create weather.json file of weather data
 
-    get_weather("/home/ubuntu/www/astrodata/weather.json",
+    weatherfile = join(expanduser("~"), "www", "astrodata", "weather.json")
+
+    get_weather(weatherfile=weatherfile,
                 longitude=-2.1544,
                 latitude=53.7111,
                 met_client_id="",

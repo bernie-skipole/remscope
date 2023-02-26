@@ -1,13 +1,11 @@
 
 # Clears out expired guests
 
-# As root create a cron table with:
+# This is typically run with a cron entry
 
-# crontab -u bernard -e
+# 0 12,13 * * * /usr/bin/python3 ~/www/astrodata/maindb/clearguests.py >/dev/null 2>&1
 
-# 0 12,13 * * * /usr/bin/python3 /home/ubuntu/www/astrodata/maindb/clearguests.py >/dev/null 2>&1
-
-# run by bernard cron every mid day, and mid day + 1
+# run every mid day, and mid day + 1 hour
 # cron works on local time, so mid day, and mid day + 1 should get 12 utc between them
 
 
