@@ -6,4 +6,4 @@ iptraf-ng
 nginx
 python3-venv
 mosquitto
-
+git-all
