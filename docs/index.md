@@ -11,7 +11,7 @@ This document describes how the user can run script files, which pull in and run
 
 Assuming you have rented a Linux VPS server, connect to it over SSH, or via KVM console.
 
-The following assumes the server is a debian/ubuntu based server, and the username of the logged in user is ubuntu, if the username is different, ensure the user where the build software will be installed has sudo capability, and the ssh call below should have the username set rather than ubuntu.  Three directories will be created in the users home, remscope, www and rsenv - so files or directories with these names should not exist, or there will be name conflicts as the directories are created.
+The following assumes the server is a debian/ubuntu based server, and the username of the logged in user is ubuntu, if the username is different, ensure the user where the build software will be installed has sudo capability, and the ssh call below should have the username set rather than ubuntu.  Three directories will be created in the users home directory; remscope, www and rsenv - so files or directories with these names should not exist, or there will be name conflicts as the directories are created.
 
 So to log in, either use putty, or if coming from a Linux laptop/desktop:
 
@@ -48,7 +48,11 @@ and in future you will no longer need to put in your password.
 
 ## Load software
 
-Having logged in to the VPS, load the remscope code from the git repository by typing:
+Having logged in to the VPS, check you are in the users home directory:
+
+**cd ~**
+
+Load the remscope code from the git repository by typing:
 
 **git clone https://github.com/bernie-skipole/remscope.git**
 
@@ -68,7 +72,7 @@ The first script to run is buildserver, this requires root permission, which is 
 
 This may ask for your password.
 
-Then run the script buildserver to install software from the ubuntu repositories, the source command runs the script file as if each line of the script was being typed in:
+Then run the script buildserver to install software from repositories, the source command runs the script file as if each line of the script was being typed in:
 
 **source buildserver**
 
@@ -101,7 +105,7 @@ Still in the remscope directory, run the script copytowww to create directory ww
 
 ## Met office data
 
-The file www/astrodata/metoffice.py needs to be edited with the client id and key for the met office, these values are not available in these scripts downloaded from github, since they are private.  If you do not have these keys, then miss this section out, it can be done later.
+The file ~/www/astrodata/metoffice.py needs to be edited with the client id and key for the met office, these values are not available in these scripts downloaded from github, since they are private.  If you do not have these keys, then miss this section out, it can be done later.
 
 To get keys, register the application with the met office Global spot data service and get a client id, and client secret api keys. You will also  need the longitude and latitude where the weather data is to be calculated for. You should then edit metoffice.py:
 
@@ -182,6 +186,8 @@ backup.py gets a dump of the main database, 2:30 afternoon every saturday, compr
 ## Upgrade during development
 
 If changes are made to the software on the github site, and these are to be applied to the running system, the following can be done - however this will briefly stop the site working, so should be done in daylight hours.
+
+**cd ~/remscope**
 
 **sudo systemctl stop acremscope**
 
