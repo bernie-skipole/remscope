@@ -179,5 +179,46 @@ clearguests.py clears expired guests from the database every mid day, and mid da
 backup.py gets a dump of the main database, 2:30 afternoon every saturday, compresses and encrypts it, and saves the file where it can be downloaded by admin users.
 
 
+## Upgrade during development
 
+If changes are made to the software on the github site, and these are to be applied to the running system, the following can be done - however this will briefly stop the site working, so should be done in daylight hours.
+
+**sudo systemctl stop acremscope**
+
+**sudo systemctl stop indidrivers**
+
+**source upgradefromgit**
+
+**sudo systemctl start indidrivers**
+
+**sudo systemctl start acremscope**
+
+
+## Restore user database from backup file
+
+Only a system administrator can restore the database, it cannot be done from the web pages.  You should stop the service:
+
+**sudo systemctl stop acremscope**
+
+The backup file should be in directory ~/www/astrodata/served/backups, or if you have a backup file held externally, it should be placed there.
+
+The restore program will not restore if a running database is in existence, check with:
+
+**cd ~/www/astrodata/maindb**
+
+**ls**
+
+If the list of contents shows the file main.db, then remove it with:
+
+**rm main.db**
+
+Ensure this directory list also includes the file keyfile - this contains the encryption key to unlock the backup. If the backup was created with a different keyfile, then the correct keyfile has to replace this file - or the file edited to contain the correct encryption string.
+
+Then restore the backup file by running restore.py with the path to the backup file, set backupfilename to the correct name:
+
+**python3 restore.py ~/www/astrodata/served/backups/backupfilename**
+
+and finally re-start the service
+
+**sudo systemctl start acremscope**
 
