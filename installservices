@@ -1,10 +1,10 @@
 ## Install acremscope.service
 
-cp /home/ubuntu/remscope/remscope.service /lib/systemd/system
+cp ~/remscope/remscope.service /lib/systemd/system
 
 ## Install indidrivers.service
 
-cp /home/ubuntu/remscope/indidrivers.service /lib/systemd/system
+cp ~/remscope/indidrivers.service /lib/systemd/system
 
 systemctl daemon-reload
 
@@ -20,7 +20,7 @@ systemctl start indidrivers
 ## on Debian systems, Nginx server blocks configuration files are stored in /etc/nginx/sites-available directory.
 ## To activate a configuration you need to symlink the file to the /etc/nginx/sites-enabled/ directory
 
-cp /home/ubuntu/remscope/nginx_conf1 /etc/nginx/sites-available
+cp ~/remscope/nginx_conf1 /etc/nginx/sites-available
 
 rm /etc/nginx/sites-enabled/default
 

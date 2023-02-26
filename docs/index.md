@@ -7,9 +7,11 @@ The rest of this document describes the VPS build.
 
 ## Server build documentation
 
+This document describes how the user can run script files, which pull in and run the remscope software.
+
 Assuming you have rented a Linux VPS server, connect to it over SSH, or via KVM console.
 
-The following assumes the server is an Ubuntu server, and the username of the logged in user is ubuntu, if the username is different several of the build scripts described here may not work - so you will have to create a user called ubuntu with sudo capability.
+The following assumes the server is a debian/ubuntu based server, and the username of the logged in user is ubuntu, if the username is different, ensure the user where the build software will be installed has sudo capability, and the ssh call below should have the username set rather than ubuntu.  Three directories will be created in the users home, remscope, www and rsenv - so files or directories with these names should not exist, or there will be name conflicts as the directories are created.
 
 So to log in, either use putty, or if coming from a Linux laptop/desktop:
 
@@ -46,7 +48,7 @@ and in future you will no longer need to put in your password.
 
 ## Load software
 
-Having logged in to the VPS as user ubuntu, load the remscope code from the git repository by typing:
+Having logged in to the VPS, load the remscope code from the git repository by typing:
 
 **git clone https://github.com/bernie-skipole/remscope.git**
 

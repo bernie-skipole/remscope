@@ -1,5 +1,5 @@
 
-rsync -ua --exclude=".*" ~/remscope/ ~/www/
+rsync -uav --include={"astrodata/","remscope/","remscope_packages/","indidrivers.py","remscope.py"} --exclude="*" ~/remscope/ ~/www/
 
 cd ~/www/astrodata
 
@@ -11,14 +11,14 @@ tar -xvf dbases.tar.gz
 
 echo "Creating planets data in planet.db, this can take some time, please wait"
 
-/home/ubuntu/rsenv/bin/python make_planets.py
+~/rsenv/bin/python make_planets.py
 
 echo "Creating the user database main.db"
 
 cd maindb
 
-/home/ubuntu/rsenv/bin/python start_db.py
+~/rsenv/bin/python start_db.py
 
-mkdir /home/ubuntu/www/astrodata/served/backups
+mkdir ~/www/astrodata/served/backups
 
-/home/ubuntu/rsenv/bin/python backup.py
+~/rsenv/bin/python backup.py
